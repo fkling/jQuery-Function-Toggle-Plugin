@@ -9,7 +9,8 @@
         var dname = "jqp_eventtoggle_" + type + (new Date()).getTime(),            
             funcs = Array.prototype.slice.call(arguments, 2),
             numFuncs = funcs.length,
-            empty = function() {};
+            empty = function() {},
+            false_handler = function() {return false;};
 
         if(typeof type === "object") {
             for( var key in type) {
@@ -24,7 +25,10 @@
         }
         
         funcs = $.map(funcs, function(func) {
-            if(func !== false && !$.isFunction(func)) {
+            if(func === false) {
+                return false_handler;
+            }
+            if(!$.isFunction(func)) {
                 return empty;
             }
             return func;
