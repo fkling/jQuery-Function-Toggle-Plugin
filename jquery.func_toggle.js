@@ -4,7 +4,15 @@
  * Dual licensed under the MIT or GPL Version 2 licenses.
  */
 
-(function($) {
+;(function (factory) {
+    if (typeof define === 'function' && define.amd) {
+        // AMD. Register as an anonymous module.
+        define(['jquery'], factory);
+    } else {
+        // Browser globals
+        factory(jQuery);
+    }
+} (function($) {
     $.fn.funcToggle = function(type, data) {
         var dname = "jqp_eventtoggle_" + type + (new Date()).getTime(),            
             funcs = Array.prototype.slice.call(arguments, 2),
@@ -43,4 +51,4 @@
         });
         return this;
     };
-}(jQuery));
+});
