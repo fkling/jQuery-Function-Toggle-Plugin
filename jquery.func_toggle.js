@@ -12,7 +12,7 @@
         // Browser globals
         factory(jQuery);
     }
-} (function($) {
+}) (function($) {
     $.fn.funcToggle = function(type, data) {
         var dname = "jqp_eventtoggle_" + type + (new Date()).getTime(),            
             funcs = Array.prototype.slice.call(arguments, 2),
